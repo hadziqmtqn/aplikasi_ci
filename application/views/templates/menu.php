@@ -10,8 +10,11 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item <?php if(($title == 'List Data Mahasiswa') OR ($title == 'Tambah Data Mahasiswa') OR ($title == 'Edit Data Mahasiswa')) echo "active"; ?>">
                 <a class="nav-link" href="<?= base_url('mahasiswa'); ?>">Mahasiswa</a>
+            </li>
+            <li class="nav-item <?php if(($title == 'Tambah Data Dosen') OR ($title == 'Data List Dosen') OR ($title == 'Edit Data Dosen')) echo "active"; ?>">
+                <a class="nav-link" href="<?= base_url('dosen'); ?>">Dosen</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>

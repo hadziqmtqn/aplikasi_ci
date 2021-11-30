@@ -58,7 +58,9 @@ class Dosen_model extends CI_Model
             "nama" => $this->input->post('nama'),
             "jenis_kelamin" => $this->input->post('jenis_kelamin'),
             "prodi" => $this->input->post('prodi'),
-            "no_hp" => $this->input->post('no_hp')
+            "no_hp" => $this->input->post('no_hp'),
+            "created_at" => date('Y-m-d H:i:s'),
+            "updated_at" => date('Y-m-d H:i:s')
         );
         return $this->db->insert($this->table, $data);
     }

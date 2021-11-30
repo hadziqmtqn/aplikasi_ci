@@ -44,6 +44,35 @@ class Dosen extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect('dosen');
+
+        $Dosen = $this->Dosen_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($Dosen->rules());
+
+        if ($validation->run()) {
+            $Dosen->update();
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data Mahasiswa berhasil disimpan.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button></div>');
+            redirect("dosen");
+        }
+        
+        $data["title"] = "Edit Data Dosen";
+        $data["data_dosen"] = $Dosen->getById($id);
+        if (!$data["data_dosen"]) show_404();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/menu');
+        $this->load->view('dosen/edit', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function delete()
     {
         $id = $this->input->get('id');

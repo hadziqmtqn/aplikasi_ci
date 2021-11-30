@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Aplikasi CI</a>
+    <a class="navbar-brand" href="<?= base_url('/') ?>">Aplikasi CI</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

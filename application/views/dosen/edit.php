@@ -4,7 +4,7 @@
         <ol class="breadcrumb ">
             <li class="breadcrumb-item"><a>Dosen</a></li>
             <li class="breadcrumb-item "><a href="<?= base_url('dosen'); ?>">List Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Data</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
         </ol>
     </nav>
     <div class="row">
@@ -13,13 +13,14 @@
                 <div class="card-body">
                     <?php
                     //create form
-                    $attributes = array('id' => 'FrmAddDosen', 'method' => "post", "autocomplete" => "off");
+                    $attributes = array('id' => 'FrmEditDosen', 'method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nama" name="nama" value=" <?= set_value('nama'); ?>">
+                            <input type="hidden" class="form-control" id="id" name="id" value=" <?= $data_dosen->id; ?>">
+                            <input type="text" class="form-control" id="nama" name="nama" value=" <?= $data_dosen->nama; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('nama') ?>
                             </small>
@@ -31,13 +32,13 @@
                             <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
                             <div class="col-sm-10">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="jenis_kelamin" name="jenis_kelamin" value="Laki-laki" <?php if (set_value('jenis_kelamin') == "Laki-laki") : echo "checked"; endif; ?>>
+                                    <input class="form-check-input" type="radio" id="jenis_kelamin" name="jenis_kelamin" value="Laki-laki" <?php if ($data_dosen->jenis_kelamin == "Laki-laki") : echo "checked"; endif; ?>>
                                     <label class="form-check-label" for="jenis_kelamin">
                                         Laki-laki
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="jenis_kelamin2" name="jenis_kelamin" value="Perempuan" <?php if (set_value('jenis_kelamin') == "Perempuan") : echo "checked"; endif; ?>>
+                                    <input class="form-check-input" type="radio" id="jenis_kelamin2" name="jenis_kelamin" value="Perempuan" <?php if ($data_dosen->jenis_kelamin == "Perempuan") : echo "checked"; endif; ?>>
                                     <label class="form-check-label" for="jenis_kelamin2">
                                         Perempuan
                                     </label>
@@ -52,7 +53,7 @@
                     <div class="form-group row">
                         <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="prodi" name="prodi"><?= set_value('prodi'); ?>
+                            <input class="form-control" id="prodi" name="prodi" value="<?= $data_dosen->prodi; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('prodi') ?>
                             </small>
@@ -62,7 +63,7 @@
                     <div class="form-group row">
                         <label for="no_hp" class="col-sm-2 col-form-label">No Hp</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= set_value('no_hp'); ?>">
+                            <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= $data_dosen->no_hp; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('no_hp') ?>
                             </small>

@@ -61,12 +61,14 @@ class Mahasiswa extends CI_Controller
             Data Mahasiswa berhasil disimpan.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button></div>');
+            </button></div>');
             redirect("mahasiswa");
         }
+        
         $data["title"] = "Edit Data Mahasiswa";
         $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         if (!$data["data_mahasiswa"]) show_404();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/edit', $data);

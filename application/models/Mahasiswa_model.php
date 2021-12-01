@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Mahasiswa_model extends CI_Model
 {
     private $table = 'mahasiswa';
+    private $proditable = 'prodi';
 
     //validasi form, method ini akan mengembailkan data berupa rules validasi form       
     public function rules()
@@ -93,5 +94,13 @@ class Mahasiswa_model extends CI_Model
     public function delete($id)
     {
         return $this->db->delete($this->table, array("IdMhsw" => $id));
+    }
+
+    public function getProdi()
+    {
+        $this->db->from($this->proditable);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->get();
+        return $query->result();
     }
 }

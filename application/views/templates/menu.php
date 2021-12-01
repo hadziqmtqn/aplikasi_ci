@@ -16,8 +16,13 @@
             <li class="nav-item <?php if(($title == 'Tambah Data Dosen') OR ($title == 'Data List Dosen') OR ($title == 'Edit Data Dosen')) echo "active"; ?>">
                 <a class="nav-link" href="<?= base_url('dosen'); ?>">Dosen</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+            <li class="nav-item dropdown <?php if($title == 'Data Prodi') echo "active"; ?>">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                Data Master
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?= base_url('prodi'); ?>">Prodi</a>
+                </div>
             </li>
         </ul>
     </div>

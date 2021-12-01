@@ -2,13 +2,13 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Dosen</a></li>
+            <li class="breadcrumb-item"><a>Prodi</a></li>
             <li class="breadcrumb-item active" aria-current="page">List Data</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('dosen/add'); ?>">Tambah Data</a>
+            <a class="btn btn-primary mb-2" href="<?= base_url('prodi/add'); ?>">Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -19,30 +19,33 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableDosen">
+                        <table class="table table-striped table-bordered table-hover" id="table_datatables">
                             <thead>
                                 <tr class="table-success">
                                     <th></th>
+                                    <th>NO</th>
                                     <th>NAMA</th>
-                                    <th>JENIS KELAMIN</th>
-                                    <th>PRODI</th>
-                                    <th>NO HP</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data_dosen as $row) : ?>
-                                    <tr>
-                                        <td>
-                                            <a href="<?= site_url('dosen/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                        <td><?= $row->nama ?></td>
-                                        <td><?= $row->jenis_kelamin ?></td>
-                                        <td><?= $row->prodi ?></td>
-                                        <td><?= $row->no_hp ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                <?php $no=1;
+                                foreach ($data_prodi as $row)
+                                {
+                                ?>
+                                <tr>
+                                    <td><?php echo $no;?></td>
+                                    <td>
+                                        <a href="<?= site_url('prodi/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
+                                        <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
+                                    </td>
+                                    <td><?= $row->nama ?></td>
+                                </tr>
+                                <?php
+                                $no++;
+                                }
+                                ?>
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -74,21 +77,20 @@
 
 <script>
     //menampilkan data ketabel dengan plugin datatables
-    $('#tableDosen').DataTable();
+    $('#table_datatables').DataTable();
 
     //menampilkan modal dialog saat tombol hapus ditekan
-    $('#tableDosen').on('click', '.item-delete', function() {
+    $('#table_datatables').on('click', '.item-delete', function() {
         //ambil data dari atribute data 
         var id = $(this).attr('data');
         $('#myModalDelete').modal('show');
         //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete 
-        //pada controller mahasiswa
         $('#btdelete').unbind().click(function() {
             $.ajax({
                 type: 'ajax',
                 method: 'get',
                 async: false,
-                url: '<?php echo base_url() ?>dosen/delete/',
+                url: '<?php echo base_url() ?>prodi/delete/',
                 data: {
                     id: id
                 },

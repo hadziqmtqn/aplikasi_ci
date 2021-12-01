@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 30, 2021 at 03:35 PM
+-- Generation Time: Dec 01, 2021 at 03:36 PM
 -- Server version: 10.3.31-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.2.34-28+ubuntu20.04.1+deb.sury.org+1
 
@@ -43,7 +43,10 @@ CREATE TABLE `dosen` (
 --
 
 INSERT INTO `dosen` (`id`, `nama`, `jenis_kelamin`, `prodi`, `no_hp`, `created_at`, `updated_at`) VALUES
-(2, 'tetetetretete', 'Laki-laki', 'sfs', 'fsfsfsf', NULL, NULL);
+(2, 'tetetetretete', 'Laki-laki', 'sfs', 'fsfsfsf', NULL, NULL),
+(3, 'wwwfefw', 'Laki-laki', 'fwfw', 'fwfwf', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'ggdgd', 'Laki-laki', 'gdgdgd', 'gdgdgd', '2021-11-30 08:54:08', '2021-11-30 08:54:08'),
+(5, 'fsfsfsfsf', 'Laki-laki', 'fsj', 'fhsdjfsjk', '2021-11-30 08:55:49', '2021-11-30 08:55:49');
 
 -- --------------------------------------------------------
 
@@ -54,6 +57,7 @@ INSERT INTO `dosen` (`id`, `nama`, `jenis_kelamin`, `prodi`, `no_hp`, `created_a
 CREATE TABLE `mahasiswa` (
   `IdMhsw` int(11) NOT NULL,
   `Nama` varchar(150) DEFAULT NULL,
+  `prodi_id` int(10) UNSIGNED NOT NULL,
   `JenisKelamin` varchar(20) DEFAULT NULL,
   `Alamat` text DEFAULT NULL,
   `Agama` varchar(30) DEFAULT NULL,
@@ -61,12 +65,29 @@ CREATE TABLE `mahasiswa` (
   `Email` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `mahasiswa`
+-- Table structure for table `prodi`
 --
 
-INSERT INTO `mahasiswa` (`IdMhsw`, `Nama`, `JenisKelamin`, `Alamat`, `Agama`, `NoHp`, `Email`) VALUES
-(2, 'gegwgw', 'Laki-laki', 'gwgwg', 'Islam', '34362628789798', 'egegeh@m.c');
+CREATE TABLE `prodi` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prodi`
+--
+
+INSERT INTO `prodi` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'sfjshfsjk', '2021-12-01 03:36:42', '2021-12-01 03:36:42'),
+(2, 'Matematika', '2021-12-01 03:37:11', '2021-12-01 03:37:11'),
+(3, 'Teknik Informatika', '2021-12-01 03:37:46', '2021-12-01 03:37:46'),
+(4, 'Sistem Informasi', '2021-12-01 03:48:17', '2021-12-01 03:48:17'),
+(5, 'Bimbingan Konseling', '2021-12-01 04:24:29', '2021-12-01 04:24:29');
 
 --
 -- Indexes for dumped tables
@@ -82,7 +103,14 @@ ALTER TABLE `dosen`
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD PRIMARY KEY (`IdMhsw`);
+  ADD PRIMARY KEY (`IdMhsw`),
+  ADD KEY `relasi_prodi` (`prodi_id`);
+
+--
+-- Indexes for table `prodi`
+--
+ALTER TABLE `prodi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -92,13 +120,29 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `IdMhsw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `prodi`
+--
+ALTER TABLE `prodi`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `relasi_prodi` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

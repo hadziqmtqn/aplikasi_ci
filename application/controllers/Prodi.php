@@ -76,12 +76,12 @@ class Prodi extends CI_Controller {
     public function delete()
     {
         $id = $this->input->get('id');
-        if(!isset($id)) show_404();
+        if (!isset($id)) show_404();
         $this->Prodi_model->delete($id);
         $msg['success'] = true;
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data Prodi berhasil dihapus.
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button></div>');
         $this->output->set_output(json_encode($msg));

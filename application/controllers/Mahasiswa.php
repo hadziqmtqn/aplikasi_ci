@@ -88,7 +88,7 @@ class Mahasiswa extends CI_Controller
         Data Mahasiswa berhasil dihapus.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button></div>');
+        </button></div>');
         $this->output->set_output(json_encode($msg));
     }
 }

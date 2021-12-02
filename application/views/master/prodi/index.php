@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="table_datatables">
+                        <table class="table table-striped table-bordered table-hover" id="tableProdi">
                             <thead>
                                 <tr class="table-success">
                                     <th>NO</th>
@@ -77,14 +77,14 @@
 
 <script>
     //menampilkan data ketabel dengan plugin datatables
-    $('#table_datatables').DataTable();
+    $('#tableProdi').DataTable();
 
     //menampilkan modal dialog saat tombol hapus ditekan
-    $('#table_datatables').on('click', '.item-delete', function() {
-        //ambil data dari atribute data 
+    $('#tableProdi').on('click', '.item-delete', function() {
+        //ambil data dari atribute data
         var id = $(this).attr('data');
         $('#myModalDelete').modal('show');
-        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete 
+        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete
         $('#btdelete').unbind().click(function() {
             $.ajax({
                 type: 'ajax',

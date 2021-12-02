@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Mahasiswa_model extends CI_Model
 {
     private $table = 'mahasiswa';
-    private $proditable = 'prodi';
 
     //validasi form, method ini akan mengembailkan data berupa rules validasi form
     public function rules()

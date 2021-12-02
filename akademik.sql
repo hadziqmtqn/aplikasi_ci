@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 01, 2021 at 03:36 PM
+-- Generation Time: Dec 02, 2021 at 11:27 AM
 -- Server version: 10.3.31-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.2.34-28+ubuntu20.04.1+deb.sury.org+1
 
@@ -43,7 +43,7 @@ CREATE TABLE `dosen` (
 --
 
 INSERT INTO `dosen` (`id`, `nama`, `jenis_kelamin`, `prodi`, `no_hp`, `created_at`, `updated_at`) VALUES
-(2, 'tetetetretete', 'Laki-laki', 'sfs', 'fsfsfsf', NULL, NULL),
+(2, 'Adit', 'Laki-laki', 'sfs', 'hwkhfwkhfw', NULL, NULL),
 (3, 'wwwfefw', 'Laki-laki', 'fwfw', 'fwfwf', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'ggdgd', 'Laki-laki', 'gdgdgd', 'gdgdgd', '2021-11-30 08:54:08', '2021-11-30 08:54:08'),
 (5, 'fsfsfsfsf', 'Laki-laki', 'fsj', 'fhsdjfsjk', '2021-11-30 08:55:49', '2021-11-30 08:55:49');
@@ -65,6 +65,17 @@ CREATE TABLE `mahasiswa` (
   `Email` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`IdMhsw`, `Nama`, `prodi_id`, `JenisKelamin`, `Alamat`, `Agama`, `NoHp`, `Email`) VALUES
+(3, 'fsdfsdfs', 5, 'Laki-laki', 'sfsfs', 'Islam', '75385738453', 'fdgfhg@f.com'),
+(4, 'Abu Langit', 4, 'Laki-laki', 'Bandung', 'Islam', '6573657836', 'abulangit@g.com'),
+(5, 'Muhammad', 2, 'Laki-laki', 'Cilacap', 'Islam', '0889489238492', 'muhammad@g.com'),
+(6, 'ffwefwewe', 3, 'Laki-laki', 'fefefe', 'Islam', '357837593', 'etjej@h.co'),
+(8, 'fahana', 3, 'Perempuan', 'Cilacap', 'Islam', '09898989890', 'fahana@g.com');
+
 -- --------------------------------------------------------
 
 --
@@ -83,11 +94,11 @@ CREATE TABLE `prodi` (
 --
 
 INSERT INTO `prodi` (`id`, `nama`, `created_at`, `updated_at`) VALUES
-(1, 'sfjshfsjk', '2021-12-01 03:36:42', '2021-12-01 03:36:42'),
 (2, 'Matematika', '2021-12-01 03:37:11', '2021-12-01 03:37:11'),
 (3, 'Teknik Informatika', '2021-12-01 03:37:46', '2021-12-01 03:37:46'),
 (4, 'Sistem Informasi', '2021-12-01 03:48:17', '2021-12-01 03:48:17'),
-(5, 'Bimbingan Konseling', '2021-12-01 04:24:29', '2021-12-01 04:24:29');
+(5, 'Bimbingan Konseling', '2021-12-01 04:24:29', '2021-12-01 04:24:29'),
+(7, 'Pendidikan Agama Islam', '2021-12-02 03:37:28', '2021-12-02 03:37:28');
 
 --
 -- Indexes for dumped tables
@@ -126,13 +137,13 @@ ALTER TABLE `dosen`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `IdMhsw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdMhsw` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

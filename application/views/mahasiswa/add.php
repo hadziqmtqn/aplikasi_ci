@@ -19,7 +19,7 @@
                     <div class="form-group row">
                         <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="Nama" name="Nama" value=" <?= set_value('Nama'); ?>">
+                            <input type="text" class="form-control" id="Nama" name="Nama" value=" <?= set_value('Nama'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('Nama') ?>
                             </small>
@@ -79,8 +79,8 @@
 
                     <div class="form-group row">
                         <label for="NoHp" class="col-sm-2 col-form-label">No Hp</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="NoHp" name="NoHp" value="<?= set_value('NoHp'); ?>">
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="NoHp" name="NoHp" value="<?= set_value('NoHp'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('NoHp') ?>
                             </small>
@@ -89,10 +89,29 @@
 
                     <div class="form-group row">
                         <label for="Email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="Email" name="Email" value="<?= set_value('Email'); ?>">
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="Email" name="Email" value="<?= set_value('Email'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('Email') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="Email" class="col-sm-2 col-form-label">Program Studi</label>
+                        <div class="col-sm-10">
+                            <select name="prodi_id" class="form-control">
+                                <option value="">Pilih</option>
+                                <?php
+                                if (!empty($data_prodi)) {
+                                    foreach ($data_prodi as $key => $value) {
+                                        echo '<option value="' . $value->id . '" ' . set_select('prodi_id', $value->id, ($data_prodi == $value->nama) ? true : false) . '>' . $value->nama . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <small class="text-danger">
+                                <?php echo form_error('prodi_id') ?>
                             </small>
                         </div>
                     </div>

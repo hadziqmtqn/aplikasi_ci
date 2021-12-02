@@ -22,7 +22,8 @@
                         <table class="table table-striped table-bordered table-hover" id="tableDosen">
                             <thead>
                                 <tr class="table-success">
-                                    <th></th>
+                                    <th>NO</th>
+                                    <th>OPSI</th>
                                     <th>NAMA</th>
                                     <th>JENIS KELAMIN</th>
                                     <th>PRODI</th>
@@ -30,18 +31,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data_dosen as $row) : ?>
-                                    <tr>
-                                        <td>
-                                            <a href="<?= site_url('dosen/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                        <td><?= $row->nama ?></td>
-                                        <td><?= $row->jenis_kelamin ?></td>
-                                        <td><?= $row->prodi ?></td>
-                                        <td><?= $row->no_hp ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                <?php $no=1;
+                                foreach ($data_dosen as $row)
+                                {
+                                ?>
+                                <tr>
+                                    <td><?php echo $no;?></td>
+                                    <td>
+                                        <a href="<?= site_url('dosen/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
+                                        <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
+                                    </td>
+                                    <td><?= $row->nama ?></td>
+                                    <td><?= $row->jenis_kelamin ?></td>
+                                    <td><?= $row->prodi ?></td>
+                                    <td><?= $row->no_hp ?></td>
+                                </tr>
+                                <?php
+                                $no++;
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

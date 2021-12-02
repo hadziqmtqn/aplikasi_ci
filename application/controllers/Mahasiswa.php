@@ -7,7 +7,6 @@ class Mahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model("Mahasiswa_model"); //load model mahasiswa
-        $this->load->model('Prodi_model');
     }
 
     //method pertama yang akan di eksekusi
@@ -30,8 +29,6 @@ class Mahasiswa extends CI_Controller
     {
         $this->load->model('Prodi_model');
 
-        $id_prodi = $this->Prodi_model;
-
         $Mahasiswa = $this->Mahasiswa_model; //objek model
         $validation = $this->form_validation; //objek form validation
         $validation->set_rules($Mahasiswa->rules()); //menerapkan rules validasi pada mahasiswa_model
@@ -46,7 +43,7 @@ class Mahasiswa extends CI_Controller
             redirect("mahasiswa");
         }
         $data["title"] = "Tambah Data Mahasiswa";
-        $data["data_prodi"] = $this->Prodi_model->getProdi();
+        $data["data_prodi"] = $this->Prodi_model->getAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/add', $data);

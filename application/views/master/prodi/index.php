@@ -22,8 +22,8 @@
                         <table class="table table-striped table-bordered table-hover" id="table_datatables">
                             <thead>
                                 <tr class="table-success">
-                                    <th></th>
                                     <th>NO</th>
+                                    <th>OPSI</th>
                                     <th>NAMA</th>
                                 </tr>
                             </thead>

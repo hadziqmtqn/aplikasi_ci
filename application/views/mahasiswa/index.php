@@ -22,30 +22,74 @@
                         <table class="table table-striped table-bordered table-hover" id="tableMahasiswa">
                             <thead>
                                 <tr class="table-success">
-                                    <th></th>
+                                    <th>NO</th>
+                                    <th>OPSI</th>
                                     <th>NAMA</th>
                                     <th>JENIS KELAMIN</th>
                                     <th>ALAMAT</th>
                                     <th>AGAMA</th>
                                     <th>NO HP</th>
                                     <th>EMAIL</th>
+                                    <th>PRODI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data_mahasiswa as $row) : ?>
-                                    <tr>
-                                        <td>
+                                <?php $no=1;
+                                foreach ($data_mahasiswa as $row)
+                                {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <div style="width: 50px">
+                                            <?php echo $no;?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 100px">
                                             <a href="<?= site_url('mahasiswa/edit/' . $row->IdMhsw) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
                                             <a href="javascript:void(0);" data="<?= $row->IdMhsw ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                        <td><?= $row->Nama ?></td>
-                                        <td><?= $row->JenisKelamin ?></td>
-                                        <td><?= $row->Alamat ?></td>
-                                        <td><?= $row->Agama ?></td>
-                                        <td><?= $row->NoHp ?></td>
-                                        <td><?= $row->Email ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 150px">
+                                            <?= $row->Nama ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 150px">
+                                            <?= $row->JenisKelamin ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 200px">
+                                            <?= $row->Alamat ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 100px">
+                                            <?= $row->Agama ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 200px">
+                                            <?= $row->NoHp ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 150px">
+                                            <?= $row->Email ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 200px">
+                                            <?= $row->nama ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                                $no++;
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -82,10 +126,10 @@
 
     //menampilkan modal dialog saat tombol hapus ditekan
     $('#tableMahasiswa').on('click', '.item-delete', function() {
-        //ambil data dari atribute data 
+        //ambil data dari atribute data
         var id = $(this).attr('data');
         $('#myModalDelete').modal('show');
-        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete 
+        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete
         //pada controller mahasiswa
         $('#btdelete').unbind().click(function() {
             $.ajax({

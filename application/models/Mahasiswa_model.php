@@ -6,7 +6,7 @@ class Mahasiswa_model extends CI_Model
     private $table = 'mahasiswa';
     private $proditable = 'prodi';
 
-    //validasi form, method ini akan mengembailkan data berupa rules validasi form       
+    //validasi form, method ini akan mengembailkan data berupa rules validasi form
     public function rules()
     {
         return [
@@ -39,6 +39,11 @@ class Mahasiswa_model extends CI_Model
                 'field' => 'Email',
                 'label' => 'Email',
                 'rules' => 'trim|required'
+            ],
+            [
+                'field' => 'prodi_id',
+                'label' => 'Prodi',
+                'rules' => 'trim|required'
             ]
         ];
     }
@@ -47,19 +52,24 @@ class Mahasiswa_model extends CI_Model
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["IdMhsw" => $id])->row();
-        //query diatas seperti halnya query pada mysql 
+        //query diatas seperti halnya query pada mysql
         //select * from mahasiswa where IdMhsw='$id'
     }
 
     //menampilkan semua data mahasiswa
     public function getAll()
     {
-        $this->db->from($this->table);
-        $this->db->order_by("IdMhsw", "desc");
-        $query = $this->db->get();
-        return $query->result();
-        //fungsi diatas seperti halnya query 
+        // $this->db->from($this->table);
+        // $this->db->order_by("IdMhsw", "desc");
+        // $query = $this->db->get();
+        // return $query->result();
+        //fungsi diatas seperti halnya query
         //select * from mahasiswa order by IdMhsw desc
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('prodi', 'mahasiswa.prodi_id = prodi.id');
+        $query = $this->db->order_by("created_at","desc")->get();
+        return $query->result();
     }
 
     //menyimpan data mahasiswa
@@ -71,7 +81,8 @@ class Mahasiswa_model extends CI_Model
             "Alamat" => $this->input->post('Alamat'),
             "Agama" => $this->input->post('Agama'),
             "NoHp" => $this->input->post('NoHp'),
-            "Email" => $this->input->post('Email')
+            "Email" => $this->input->post('Email'),
+            "prodi_id" => $this->input->post('prodi_id')
         );
         return $this->db->insert($this->table, $data);
     }
@@ -96,11 +107,4 @@ class Mahasiswa_model extends CI_Model
         return $this->db->delete($this->table, array("IdMhsw" => $id));
     }
 
-    public function getProdi()
-    {
-        $this->db->from($this->proditable);
-        $this->db->order_by("id", "desc");
-        $query = $this->db->get();
-        return $query->result();
-    }
 }

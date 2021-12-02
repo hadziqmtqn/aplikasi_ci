@@ -67,7 +67,7 @@ class Mahasiswa_model extends CI_Model
         $this->db->select('*');
         $this->db->from('mahasiswa');
         $this->db->join('prodi', 'mahasiswa.prodi_id = prodi.id');
-        $query = $this->db->order_by("created_at","desc")->get();
+        $query = $this->db->get();
         return $query->result();
     }
 
@@ -95,7 +95,8 @@ class Mahasiswa_model extends CI_Model
             "Alamat" => $this->input->post('Alamat'),
             "Agama" => $this->input->post('Agama'),
             "NoHp" => $this->input->post('NoHp'),
-            "Email" => $this->input->post('Email')
+            "Email" => $this->input->post('Email'),
+            "prodi_id" => $this->input->post('prodi_id')
         );
         return $this->db->update($this->table, $data, array('IdMhsw' => $this->input->post('IdMhsw')));
     }

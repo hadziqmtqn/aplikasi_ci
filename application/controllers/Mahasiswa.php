@@ -7,6 +7,7 @@ class Mahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model("Mahasiswa_model"); //load model mahasiswa
+        $this->load->model('Prodi_model');
     }
 
     //method pertama yang akan di eksekusi
@@ -27,8 +28,6 @@ class Mahasiswa extends CI_Controller
     //method add digunakan untuk menampilkan form tambah data mahasiswa
     public function add()
     {
-        $this->load->model('Prodi_model');
-
         $Mahasiswa = $this->Mahasiswa_model; //objek model
         $validation = $this->form_validation; //objek form validation
         $validation->set_rules($Mahasiswa->rules()); //menerapkan rules validasi pada mahasiswa_model
@@ -71,10 +70,28 @@ class Mahasiswa extends CI_Controller
         $data["title"] = "Edit Data Mahasiswa";
         $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         if (!$data["data_mahasiswa"]) show_404();
-
+        $data["data_prodi"] = $this->Prodi_model->getAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/edit', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail($id = null)
+    {
+        if (!isset($id)) redirect('mahasiswa');
+
+        $Mahasiswa = $this->Mahasiswa_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($Mahasiswa->rules());
+
+        $data["title"] = "Detail Mahasiswa";
+        $data["data_mahasiswa"] = $Mahasiswa->getById($id);
+        if (!$data["data_mahasiswa"]) show_404();
+        $data["data_prodi"] = $this->Prodi_model->getById($id);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/menu');
+        $this->load->view('mahasiswa/detail', $data);
         $this->load->view('templates/footer');
     }
 

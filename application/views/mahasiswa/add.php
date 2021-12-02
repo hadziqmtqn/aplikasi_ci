@@ -19,7 +19,8 @@
                     <div class="form-group row">
                         <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="Nama" name="Nama" value=" <?= set_value('Nama'); ?>" required>
+                            <input type="text" class="form-control" id="Nama" name="Nama"
+                                value=" <?= set_value('Nama'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('Nama') ?>
                             </small>
@@ -31,13 +32,17 @@
                             <legend class="col-form-label col-sm-2 pt-0">Jenis Kelamin</legend>
                             <div class="col-sm-10">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="JenisKelamin" name="JenisKelamin" value="Laki-laki" <?php if (set_value('JenisKelamin') == "Laki-laki") : echo "checked"; endif; ?>>
+                                    <input class="form-check-input" type="radio" id="JenisKelamin" name="JenisKelamin"
+                                        value="Laki-laki"
+                                        <?php if (set_value('JenisKelamin') == "Laki-laki") : echo "checked"; endif; ?>>
                                     <label class="form-check-label" for="JenisKelamin">
                                         Laki-laki
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" id="JenisKelamin2" name="JenisKelamin" value="Perempuan" <?php if (set_value('JenisKelamin') == "Perempuan") : echo "checked"; endif; ?>>
+                                    <input class="form-check-input" type="radio" id="JenisKelamin2" name="JenisKelamin"
+                                        value="Perempuan"
+                                        <?php if (set_value('JenisKelamin') == "Perempuan") : echo "checked"; endif; ?>>
                                     <label class="form-check-label" for="JenisKelamin2">
                                         Perempuan
                                     </label>
@@ -52,7 +57,8 @@
                     <div class="form-group row">
                         <label for="Alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="Alamat" name="Alamat" rows="3"><?= set_value('Alamat'); ?></textarea>
+                            <textarea class="form-control" id="Alamat" name="Alamat"
+                                rows="3"><?= set_value('Alamat'); ?></textarea>
                             <small class="text-danger">
                                 <?php echo form_error('Alamat') ?>
                             </small>
@@ -64,12 +70,22 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="Agama" name="Agama">
                                 <option value="Islam" selected disabled>Pilih</option>
-                                <option value="Islam" <?php if (set_value('Agama') == "Islam") : echo "selected"; endif; ?>>Islam</option>
-                                <option value="Protestan" <?php if (set_value('Agama') == "Protestan") : echo "selected"; endif; ?>>Protestan</option>
-                                <option value="Katolik" <?php if (set_value('Agama') == "Katolik") : echo "selected"; endif; ?>>Katolik</option>
-                                <option value="Hindu" <?php if (set_value('Agama') == "Hindu") : echo "selected"; endif; ?>>Hindu</option>
-                                <option value="Buddha" <?php if (set_value('Agama') == "Buddha") : echo "selected"; endif; ?>>Buddha</option>
-                                <option value="Khonghucu" <?php if (set_value('Agama') == "Khonghucu") : echo "selected"; endif; ?>>Khonghucu</option>
+                                <option value="Islam"
+                                    <?php if (set_value('Agama') == "Islam") : echo "selected"; endif; ?>>Islam</option>
+                                <option value="Protestan"
+                                    <?php if (set_value('Agama') == "Protestan") : echo "selected"; endif; ?>>Protestan
+                                </option>
+                                <option value="Katolik"
+                                    <?php if (set_value('Agama') == "Katolik") : echo "selected"; endif; ?>>Katolik
+                                </option>
+                                <option value="Hindu"
+                                    <?php if (set_value('Agama') == "Hindu") : echo "selected"; endif; ?>>Hindu</option>
+                                <option value="Buddha"
+                                    <?php if (set_value('Agama') == "Buddha") : echo "selected"; endif; ?>>Buddha
+                                </option>
+                                <option value="Khonghucu"
+                                    <?php if (set_value('Agama') == "Khonghucu") : echo "selected"; endif; ?>>Khonghucu
+                                </option>
                             </select>
                             <small class="text-danger">
                                 <?php echo form_error('Agama') ?>
@@ -80,7 +96,8 @@
                     <div class="form-group row">
                         <label for="NoHp" class="col-sm-2 col-form-label">No Hp</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="NoHp" name="NoHp" value="<?= set_value('NoHp'); ?>" required>
+                            <input type="number" class="form-control" id="NoHp" name="NoHp"
+                                value="<?= set_value('NoHp'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('NoHp') ?>
                             </small>
@@ -90,7 +107,8 @@
                     <div class="form-group row">
                         <label for="Email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="Email" name="Email" value="<?= set_value('Email'); ?>" required>
+                            <input type="email" class="form-control" id="Email" name="Email"
+                                value="<?= set_value('Email'); ?>" required>
                             <small class="text-danger">
                                 <?php echo form_error('Email') ?>
                             </small>

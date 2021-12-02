@@ -45,9 +45,11 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div style="width: 100px">
+                                        <div style="width: 150px">
+                                            <a href="<?= site_url('mahasiswa/detail/' . $row->IdMhsw) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
                                             <a href="<?= site_url('mahasiswa/edit/' . $row->IdMhsw) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->IdMhsw ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
+                                            <a href="javascript:void(0);" data="<?= $row->IdMhsw ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i>
+                                            </a>
                                         </div>
                                     </td>
                                     <td>
@@ -121,31 +123,31 @@
 </div>
 
 <script>
-    //menampilkan data ketabel dengan plugin datatables
-    $('#tableMahasiswa').DataTable();
+//menampilkan data ketabel dengan plugin datatables
+$('#tableMahasiswa').DataTable();
 
-    //menampilkan modal dialog saat tombol hapus ditekan
-    $('#tableMahasiswa').on('click', '.item-delete', function() {
-        //ambil data dari atribute data
-        var id = $(this).attr('data');
-        $('#myModalDelete').modal('show');
-        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete
-        //pada controller mahasiswa
-        $('#btdelete').unbind().click(function() {
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                async: false,
-                url: '<?php echo base_url() ?>mahasiswa/delete/',
-                data: {
-                    id: id
-                },
-                dataType: 'json',
-                success: function(response) {
-                    $('#myModalDelete').modal('hide');
-                    location.reload();
-                }
-            });
+//menampilkan modal dialog saat tombol hapus ditekan
+$('#tableMahasiswa').on('click', '.item-delete', function() {
+    //ambil data dari atribute data
+    var id = $(this).attr('data');
+    $('#myModalDelete').modal('show');
+    //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete
+    //pada controller mahasiswa
+    $('#btdelete').unbind().click(function() {
+        $.ajax({
+            type: 'ajax',
+            method: 'get',
+            async: false,
+            url: '<?php echo base_url() ?>mahasiswa/delete/',
+            data: {
+                id: id
+            },
+            dataType: 'json',
+            success: function(response) {
+                $('#myModalDelete').modal('hide');
+                location.reload();
+            }
         });
     });
+});
 </script>

@@ -66,7 +66,7 @@ class Mahasiswa extends CI_Controller
             </button></div>');
             redirect("mahasiswa");
         }
-        
+
         $data["title"] = "Edit Data Mahasiswa";
         $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         if (!$data["data_mahasiswa"]) show_404();
@@ -88,7 +88,7 @@ class Mahasiswa extends CI_Controller
         $data["title"] = "Detail Mahasiswa";
         $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         if (!$data["data_mahasiswa"]) show_404();
-        $data["data_prodi"] = $this->Prodi_model->getById($id);
+        // die(json_encode($data));
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/detail', $data);

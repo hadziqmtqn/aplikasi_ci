@@ -20,7 +20,7 @@ class Dosen_model extends CI_Model
                 'rules' => 'trim|required'
             ],
             [
-                'field' => 'prodi',
+                'field' => 'prodi_id',
                 'label' => 'Prodi',
                 'rules' => 'trim|required'
             ],
@@ -35,6 +35,7 @@ class Dosen_model extends CI_Model
     //menampilkan data dosen berdasarkan id dosen
     public function getById($id)
     {
+        $this->db->join('prodi', 'prodi.id = dosen.prodi_id', 'LEFT');
         return $this->db->get_where($this->table, ["id" => $id])->row();
         //query diatas seperti halnya query pada mysql 
         //select * from dosen where id='$id'
@@ -43,12 +44,12 @@ class Dosen_model extends CI_Model
     //menampilkan semua data dosen
     public function getAll()
     {
-        $this->db->from($this->table);
-        $this->db->order_by("id", "desc");
+        $this->db->select('dosen.*,prodi.nama as nama_prodi');
+        // jika nama kolom pada primaty key sama dengan nama kolom pada table foreign key
+        $this->db->from('dosen');
+        $this->db->join('prodi', 'dosen.prodi_id = prodi.id');
         $query = $this->db->get();
         return $query->result();
-        //fungsi diatas seperti halnya query 
-        //select * from dosen order by id desc
     }
 
     //menyimpan data dosen
@@ -57,7 +58,7 @@ class Dosen_model extends CI_Model
         $data = array(
             "nama" => $this->input->post('nama'),
             "jenis_kelamin" => $this->input->post('jenis_kelamin'),
-            "prodi" => $this->input->post('prodi'),
+            "prodi_id" => $this->input->post('prodi_id'),
             "no_hp" => $this->input->post('no_hp'),
             "created_at" => date('Y-m-d H:i:s'),
             "updated_at" => date('Y-m-d H:i:s')
@@ -71,8 +72,9 @@ class Dosen_model extends CI_Model
         $data = array(
             "nama" => $this->input->post('nama'),
             "jenis_kelamin" => $this->input->post('jenis_kelamin'),
-            "prodi" => $this->input->post('prodi'),
-            "no_hp" => $this->input->post('no_hp')
+            "prodi_id" => $this->input->post('prodi_id'),
+            "no_hp" => $this->input->post('no_hp'),
+            "updated_at" => date('Y-m-d H:i:s')
         );
         return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
     }

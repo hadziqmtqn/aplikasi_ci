@@ -50,11 +50,20 @@
                     </fieldset>
 
                     <div class="form-group row">
-                        <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
+                        <label for="Email" class="col-sm-2 col-form-label">Program Studi</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="prodi" name="prodi"><?= set_value('prodi'); ?>
+                            <select name="prodi_id" class="form-control">
+                                <option value="">Pilih</option>
+                                <?php
+                                if (!empty($data_prodi)) {
+                                    foreach ($data_prodi as $key => $value) {
+                                        echo '<option value="' . $value->id . '" ' . set_select('prodi_id', $value->id, ($data_prodi == $value->nama) ? true : false) . '>' . $value->nama . '</option>';
+                                    }
+                                }
+                                ?>
+                            </select>
                             <small class="text-danger">
-                                <?php echo form_error('prodi') ?>
+                                <?php echo form_error('prodi_id') ?>
                             </small>
                         </div>
                     </div>

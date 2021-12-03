@@ -43,6 +43,7 @@ class Mahasiswa extends CI_Controller
         }
         $data["title"] = "Tambah Data Mahasiswa";
         $data["data_prodi"] = $this->Prodi_model->getAll();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/add', $data);
@@ -68,9 +69,10 @@ class Mahasiswa extends CI_Controller
         }
 
         $data["title"] = "Edit Data Mahasiswa";
-        $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         if (!$data["data_mahasiswa"]) show_404();
+        $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         $data["data_prodi"] = $this->Prodi_model->getAll();
+        
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/edit', $data);

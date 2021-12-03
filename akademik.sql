@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 02, 2021 at 11:27 AM
+-- Generation Time: Dec 03, 2021 at 02:44 PM
 -- Server version: 10.3.31-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.2.34-28+ubuntu20.04.1+deb.sury.org+1
 
@@ -32,7 +32,7 @@ CREATE TABLE `dosen` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jenis_kelamin` varchar(100) NOT NULL,
-  `prodi` varchar(100) NOT NULL,
+  `prodi_id` int(10) UNSIGNED DEFAULT NULL,
   `no_hp` varchar(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -42,11 +42,8 @@ CREATE TABLE `dosen` (
 -- Dumping data for table `dosen`
 --
 
-INSERT INTO `dosen` (`id`, `nama`, `jenis_kelamin`, `prodi`, `no_hp`, `created_at`, `updated_at`) VALUES
-(2, 'Adit', 'Laki-laki', 'sfs', 'hwkhfwkhfw', NULL, NULL),
-(3, 'wwwfefw', 'Laki-laki', 'fwfw', 'fwfwf', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'ggdgd', 'Laki-laki', 'gdgdgd', 'gdgdgd', '2021-11-30 08:54:08', '2021-11-30 08:54:08'),
-(5, 'fsfsfsfsf', 'Laki-laki', 'fsj', 'fhsdjfsjk', '2021-11-30 08:55:49', '2021-11-30 08:55:49');
+INSERT INTO `dosen` (`id`, `nama`, `jenis_kelamin`, `prodi_id`, `no_hp`, `created_at`, `updated_at`) VALUES
+(6, 'Anang', 'Laki-laki', 7, '0899833867823', '2021-12-03 07:29:05', '2021-12-03 07:29:05');
 
 -- --------------------------------------------------------
 
@@ -108,7 +105,8 @@ INSERT INTO `prodi` (`id`, `nama`, `created_at`, `updated_at`) VALUES
 -- Indexes for table `dosen`
 --
 ALTER TABLE `dosen`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `prodi_relasi` (`prodi_id`);
 
 --
 -- Indexes for table `mahasiswa`
@@ -131,7 +129,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
@@ -148,6 +146,12 @@ ALTER TABLE `prodi`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dosen`
+--
+ALTER TABLE `dosen`
+  ADD CONSTRAINT `prodi_relasi` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id`);
 
 --
 -- Constraints for table `mahasiswa`

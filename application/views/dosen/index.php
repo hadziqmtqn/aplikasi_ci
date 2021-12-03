@@ -43,7 +43,7 @@
                                     </td>
                                     <td><?= $row->nama ?></td>
                                     <td><?= $row->jenis_kelamin ?></td>
-                                    <td><?= $row->prodi ?></td>
+                                    <td><?= $row->nama_prodi ?></td>
                                     <td><?= $row->no_hp ?></td>
                                 </tr>
                                 <?php

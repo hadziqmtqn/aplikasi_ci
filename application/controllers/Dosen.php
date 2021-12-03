@@ -8,6 +8,7 @@ class Dosen extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Dosen_model");
+        $this->load->model("Prodi_model");
     }
 
     public function index()
@@ -37,6 +38,7 @@ class Dosen extends CI_Controller {
             redirect("dosen");
         }
         $data["title"] = "Tambah Data Dosen";
+        $data["data_prodi"] = $this->Prodi_model->getAll();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu', $data);
@@ -64,12 +66,31 @@ class Dosen extends CI_Controller {
         }
         
         $data["title"] = "Edit Data Dosen";
-        $data["data_dosen"] = $Dosen->getById($id);
         if (!$data["data_dosen"]) show_404();
-
+        $data["data_dosen"] = $Dosen->getById($id);
+        $data["data_prodi"] = $this->Prodi_model->getAll();
+        
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('dosen/edit', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail($id = null)
+    {
+        if (!isset($id)) redirect('dosen');
+
+        $Dosen = $this->Dosen_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($Dosen->rules());
+
+        $data["title"] = "Detail Dosen";
+        $data["data_dosen"] = $Dosen->getById($id);
+        if (!$data["data_dosen"]) show_404();
+        // die(json_encode($data));
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/menu');
+        $this->load->view('dosen/detail', $data);
         $this->load->view('templates/footer');
     }
 

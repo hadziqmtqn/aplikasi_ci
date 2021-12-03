@@ -56,15 +56,14 @@ class Dosen extends CI_Controller {
 
         if ($validation->run()) {
             $Dosen->update();
-
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Dosen berhasil disimpan.
+            Data Mahasiswa berhasil disimpan.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button></div>');
             redirect("dosen");
         }
-        
+
         $data["title"] = "Edit Data Dosen";
         if (!$data["data_dosen"]) show_404();
         $data["data_dosen"] = $Dosen->getById($id);

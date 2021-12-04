@@ -38,6 +38,7 @@
                                 <tr>
                                     <td><?php echo $no;?></td>
                                     <td>
+                                        <a href="<?= site_url('dosen/detail/' . $row->id) ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
                                         <a href="<?= site_url('dosen/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
                                         <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
                                     </td>

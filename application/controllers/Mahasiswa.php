@@ -69,10 +69,9 @@ class Mahasiswa extends CI_Controller
         }
 
         $data["title"] = "Edit Data Mahasiswa";
-        if (!$data["data_mahasiswa"]) show_404();
         $data["data_mahasiswa"] = $Mahasiswa->getById($id);
         $data["data_prodi"] = $this->Prodi_model->getAll();
-        
+        if (!$data["data_mahasiswa"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('mahasiswa/edit', $data);

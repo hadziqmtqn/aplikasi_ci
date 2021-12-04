@@ -65,10 +65,9 @@ class Dosen extends CI_Controller {
         }
 
         $data["title"] = "Edit Data Dosen";
-        if (!$data["data_dosen"]) show_404();
         $data["data_dosen"] = $Dosen->getById($id);
         $data["data_prodi"] = $this->Prodi_model->getAll();
-        
+        if (!$data["data_dosen"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
         $this->load->view('dosen/edit', $data);
@@ -78,11 +77,11 @@ class Dosen extends CI_Controller {
     public function detail($id = null)
     {
         if (!isset($id)) redirect('dosen');
-
+        
         $Dosen = $this->Dosen_model;
         $validation = $this->form_validation;
         $validation->set_rules($Dosen->rules());
-
+        
         $data["title"] = "Detail Dosen";
         $data["data_dosen"] = $Dosen->getById($id);
         if (!$data["data_dosen"]) show_404();

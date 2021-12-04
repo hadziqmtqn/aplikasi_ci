@@ -35,7 +35,6 @@ class Dosen_model extends CI_Model
     //menampilkan data dosen berdasarkan id dosen
     public function getById($id)
     {
-        $this->db->join('prodi', 'prodi.id = dosen.prodi_id', 'LEFT');
         return $this->db->get_where($this->table, ["id" => $id])->row();
         //query diatas seperti halnya query pada mysql 
         //select * from dosen where id='$id'
